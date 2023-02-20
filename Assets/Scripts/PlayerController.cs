@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // This is the speed variable 
+    // It is public so you can see it and change it from editor
     public float speed = 10.0f;
     // Start is called before the first frame update
     void Start()
