@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     // This is the speed variable 
     // It is public so you can see it and change it from editor
-    public float speed = 10.0f;
+    private float speed = 20.0f;
+    private float turnSpeed = 32.0f;
+    private float horizontalInput;
+    private float verticalInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +19,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // We'll move the vehicle forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        // Move the vehicle forward
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
+        // Make the vehicle turn
+        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
